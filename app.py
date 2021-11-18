@@ -38,7 +38,9 @@ def run():
                 predictions = model.predict(cleaned_text)
                 predictions_df =pd.DataFrame(predictions,columns=["Category"])
                 predictions_df.to_csv('predictions.txt',index=False)
-                st.success("The predictions are saved in predictions.txt")
+                st.success("The predictions are below, to download click the Download button")
+                st.dataframe(predictions_df)
+                st.download_button(label='Download',data=predictions_df.to_csv(),mime='text/csv')
                 #st.balloons()
 
 
